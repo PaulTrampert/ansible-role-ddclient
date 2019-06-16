@@ -1,0 +1,6 @@
+---
+- name: Restart ddclient
+  when: ddclient_config is changed
+  service:
+    name: ddclient
+    state: restarted

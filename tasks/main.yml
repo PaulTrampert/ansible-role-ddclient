@@ -1,0 +1,18 @@
+---
+- name: Install ddclient
+  notify: Restart ddclient
+  package:
+    name: ddclient
+    state: latest
+
+- name: Configure ddclient
+  notify: Restart ddclient
+  register: ddclient_config
+  template:
+    src: ddclient.conf.j2
+    dest: /etc/ddclient.conf
+
+- name: Ensure ddclient started
+  service:
+    name: ddclient
+    state: started

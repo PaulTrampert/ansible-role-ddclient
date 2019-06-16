@@ -1,0 +1,10 @@
+---
+- name: Converge
+  hosts: all
+  vars:
+    ddclient_server: example.com
+    ddclient_login: asdfasdf
+    ddclient_pw: asdfasdf
+    ddclient_domains: mydomain.com
+  roles:
+    - role: ansible-role-ddclient

@@ -1,0 +1,7 @@
+---
+ddclient_daemon: 300
+ddclient_mail: root
+ddclient_mail_failure: root
+ddclient_protocol: dyndns2
+ddclient_use: web
+ddclient_ssl: yes
