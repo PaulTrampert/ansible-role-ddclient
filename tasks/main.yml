@@ -3,7 +3,7 @@
   notify: Restart ddclient
   package:
     name: ddclient
-    state: latest
+    state: present
 
 - name: Configure ddclient
   notify: Restart ddclient
