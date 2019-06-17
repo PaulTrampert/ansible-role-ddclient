@@ -6,6 +6,10 @@ pipeline {
     timestamps()
   }
 
+  environment {
+    PATH = "$PATH:~/.local/bin"
+  }
+
   stages {
     stage('Test') {
       steps {
