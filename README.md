@@ -1,30 +1,33 @@
 Role Name
 =========
 
-A brief description of the role goes here.
+Installs and configures ddclient to keep a dynamic domain name up to date.
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should
-be mentioned here. For instance, if the role uses the EC2 module, it may be a
-good idea to mention in this section that the boto package is required.
+None.
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including
-any variables that are in defaults/main.yml, vars/main.yml, and any variables
-that can/should be set via parameters to the role. Any variables that are read
-from other roles and/or the global scope (ie. hostvars, group vars, etc.) should
-be mentioned here as well.
+| Variable              | Required | Default Value | Description                                      |
+|-----------------------|----------|---------------|--------------------------------------------------|
+| ddclient_domains      | yes      |               | Comma separated list of domains to update        |
+| ddclient_pw           | yes      |               | The password to update your dynamic dns provider |
+| ddclient_login        | yes      |               | The user id used for your dynamic dns provider   |
+| ddclient_server       | yes      |               | The update server for your dynamic dns provider  |
+| ddclient_ssl          | no       | yes           | Connect to your provider with ssl?               |
+| ddclient_use          | no       | web           | How to determine your IP address                 |
+| ddclient_protocol     | no       | dyndns2       | The protocol used by your dynamic dns provider   |
+| ddclient_mail         | no       | root          | Where to mail status updates                     |
+| ddclient_mail_failure | no       | root          | Where to mail failures                           |
+| ddclient_daemon       | no       | 300           | How often to update IP                           |
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in
-regards to parameters that may need to be set for other roles, or variables that
-are used from other roles.
+None
 
 Example Playbook
 ----------------
@@ -34,15 +37,14 @@ passed in as parameters) is always nice for users too:
 
     - hosts: servers
       roles:
-         - { role: ansible-role-ddclient, x: 42 }
+         - role: ddclient
+           vars:
+             ddclient_domains: mydomain.com,derp.com
+             ddclient_pw: somepw
+             ddclient_login: somelogin
+             ddclient_server: domains.google.com
 
 License
 -------
 
-BSD
-
-Author Information
-------------------
-
-An optional section for the role authors to include contact information, or a
-website (HTML is not allowed).
+MIT
