@@ -1,9 +1,10 @@
 ---
 - name: Install ddclient
   notify: Restart ddclient
-  package:
+  apt:
     name: ddclient
-    state: present
+    update_cache: yes
+    state: latest
 
 - name: Configure ddclient
   notify: Restart ddclient
