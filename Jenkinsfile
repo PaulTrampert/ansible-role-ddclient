@@ -18,8 +18,8 @@ pipeline {
     always {
       deleteDir()
     }
-    regression {
-      mail subject: 'Build status of ${JOB_NAME} changed to ${currentBuild.result}', to: 'paul.trampert@ptrampert.com'
+    changed {
+      mail subject: "Build status of ${JOB_NAME} changed to ${currentBuild.result}", to: 'paul.trampert@ptrampert.com', body: "Build log attached."
     }
   }
 }
